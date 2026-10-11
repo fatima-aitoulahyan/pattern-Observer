@@ -1,33 +1,36 @@
-pattern-Observer
+# Design Pattern Observer en Java
 
-Ce projet s'inscrit dans le cadre de l'Activité Pratique N° 2 (encadrée par M. Mohamed Youssfi) portant sur l'étude et la mise en œuvre des patrons de conception en Java. Il implémente spécifiquement le pattern comportemental Observer.
+Ce projet est une implémentation simple et pédagogique du **Design Pattern Observer** (Observateur) en Java. Il s'inscrit dans le cadre de l'Activité Pratique N° 2 encadrée par M. Mohamed Youssfi. Il illustre le mécanisme de notification un-à-plusieurs entre un objet observable et ses observateurs.
 
-Contexte et Objectif
+## Architecture du Projet
 
-Le design pattern Observer (ou Publication-Abonnement) permet de définir un mécanisme de liaison un-à-plusieurs entre des objets. Lorsqu'un objet (l'Observable) change d'état, tous ses dépendants (les Observers) en sont automatiquement notifiés et mis à jour.
+Le projet suit une structure orientée objet propre avec les composants suivants :
+- **`Observable`** (Interface) : Définit les méthodes de gestion des abonnements (`subscribe`, `unsubscribe`) et de notification (`notifyObservers`).
+- **`Observer`** (Interface) : Définit la méthode de mise à jour (`update`).
+- **`ObservableImpl`** : Implémentation concrète de l'observable qui maintient l'état et la liste des observateurs.
+- **`ObserverImpl1` & `ObserverImpl2`** : Implémentations concrètes des observateurs réagissant aux changements d'état.
+- **`Main`** : La classe principale (`EntryPoint`) permettant d'initialiser et de tester le comportement du pattern.
 
-Architecture du Projet (Diagramme de Classes)
+## Diagramme de Classes
 
-Le diagramme ci-dessous illustre la structure des classes et des interfaces implémentées dans le package org.example.obs :
+Le diagramme ci-dessous illustre la structure des classes et des interfaces du projet :
 
-Description des composants :
+![Diagramme de classes du pattern Observer](observer-diagram.png)
 
-Observable (Interface) : Définit les méthodes de gestion des abonnements (subscribe, unsubscribe) et de notification (notifyObservers).
+## Technologies Utilisées
+- **Java** (JDK 21)
+- **Maven** (Gestion de projet et compilation)
+- **IntelliJ IDEA** (Environnement de développement)
 
-Observer (Interface) : Définit la méthode de mise à jour (update).
+## Exemple d'utilisation
 
-ObservableImpl (Classe concrète) : Maintient la liste des observateurs abonnés, gère un état (state) et notifie les observateurs dès que cet état change.
+```java
+ObservableImpl observable = new ObservableImpl();
+Observer o1 = new ObserverImpl1();
+Observer o2 = new ObserverImpl2();
 
-ObserverImpl1 & ObserverImpl2 (Classes concrètes) : Implémentent la méthode update pour réagir aux notifications envoyées par l'observable.
+observable.subscribe(o1);
+observable.subscribe(o2);
 
-Technologies Utilisées
-
-Langage : Java (JDK 21)
-
-Outil de build : Maven
-
-Environnement de développement : IntelliJ IDEA
-
-Référence Pédagogique
-
-Auteur du cours : Mohamed Youssfi
+// Modification de l'état et notification automatique des observateurs
+observable.setState(3);
