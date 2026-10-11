@@ -8,6 +8,12 @@ public class ObserverImpl2 implements Observer {
     @Override
     public void update(int newState) {
         history.add(newState);
-        System.out.println("*************");
+        double sum=0;
+        for (int i=0 ; i<history.size();i++){
+            sum=sum+history.get(i);
+        }
+        System.out.println("******Observer 2*******");
+
+        System.out.println("Moyenne = "+sum/history.size());
     }
 }
