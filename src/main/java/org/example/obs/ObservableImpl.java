@@ -17,10 +17,20 @@ public class ObservableImpl implements Observable{
         observers.remove(o);
 
     }
-    @Override
+    //méthode Push
+    /*@Override
     public void notifyObservers() {
         for (Observer o : observers) {
             o.update(state);
+
+        }
+
+    }*/
+    //méthode Pop
+    @Override
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update(this);
 
         }
 

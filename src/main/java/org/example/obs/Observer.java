@@ -1,5 +1,8 @@
 package org.example.obs;
 @FunctionalInterface
 public interface Observer {
-    void update(int newState);
+    //méthode Push
+    //void update(int newState);
+    //méthode Pop
+    void update(Observable o);
 }
